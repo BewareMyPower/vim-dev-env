@@ -46,4 +46,3 @@ COPY .ccls /root
 
 WORKDIR /app
 COPY .ccls /app
-COPY example.cc /app
