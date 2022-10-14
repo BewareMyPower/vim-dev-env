@@ -2,7 +2,7 @@
 
 The development environment based on Vim editor.
 
-## Install on Ubuntu 20.04
+## Install on Ubuntu
 
 You only need to run `./install.sh`.
 
@@ -19,6 +19,10 @@ export PROXY=socks5://172.30.80.1:10808
 # Inside a ubuntu:20.04 docker container
 export PROXY=socks5://host.docker.internal:10808
 ```
+
+> **NOTE**
+>
+> On Ubuntu 18.04, you might need to import some special paths in `.ccls` file, see [.ccls-ubuntu-18.04](./.ccls-ubuntu-18.04).
 
 ## Docker image set up
 

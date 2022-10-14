@@ -40,9 +40,3 @@ RUN git clone --depth=1 --recursive https://github.com/MaskRay/ccls && cd ccls \
     && cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/root/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04 \
     && cmake --build Release -- -j4 && cp Release/ccls /usr/bin \
     && cd .. && rm -rf rm -rf ccls/ clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04/
-
-# The include paths are copied from the output of `g++ -v` command
-COPY .ccls /root
-
-WORKDIR /app
-COPY .ccls /app
