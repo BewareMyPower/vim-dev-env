@@ -10,8 +10,14 @@ if [[ $PROXY ]]; then
     export https_proxy=$PROXY
 fi
 
-$SUDO apt -y update
-$SUDO apt install -y curl git gcc g++ cmake clang-format ccls nodejs universal-ctags
+if [[ $APT_PROXY ]]; then
+    APT="http_proxy=$APT_PROXY apt"
+else
+    APT="apt"
+fi
+
+$SUDO $APT -y update
+$SUDO $APT install -y curl git gcc g++ cmake clang-format ccls nodejs universal-ctags
 
 if [[ $PROXY ]]; then
     git config --global http.https://github.com.proxy $PROXY
@@ -22,7 +28,7 @@ curl -O -L https://install-node.vercel.app/lts
 bash lts -y
 rm -f lts
 
-$SUDO apt install -y libncurses-dev python3-dev
+$SUDO $APT install -y libncurses-dev python3-dev
 git clone https://github.com/vim/vim.git -b v9.0.0713
 pushd vim
     LDFLAGS=-rdynamic ./configure --enable-python3interp --with-python3-command=python3
