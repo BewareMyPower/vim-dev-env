@@ -22,6 +22,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Highlight for *.md files
 Plug 'plasticboy/vim-markdown'
+" Highlight plugin for modern C++
+Plug 'bfrg/vim-cpp-modern'
 
 call plug#end()
 
