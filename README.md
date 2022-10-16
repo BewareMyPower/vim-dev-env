@@ -6,6 +6,12 @@ The development environment based on Vim editor.
 
 You only need to run `./install.sh`.
 
+> **NOTE**
+>
+> On Ubuntu 18.04, you might need to import some special paths in `.ccls` file, see [.ccls-ubuntu-18.04](./.ccls-ubuntu-18.04).
+
+## Proxy
+
 Since GitHub and apt source are blocked in some particular areas, if you have a proxy, you can configure the environment variable `PROXY` before running `install.sh`.
 
 For example, my Ubuntu runs in [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) and there is a proxy that listens on 10808 port. Here are how I configured the `PROXY` variable:
@@ -20,9 +26,15 @@ export PROXY=socks5://172.30.80.1:10808
 export PROXY=socks5://host.docker.internal:10808
 ```
 
+You might need to configure a separate proxy for `apt` because it uses `socks5h` instead of `socks5` as the scheme, e.g.
+
+```bash
+export APT_PROXY=socks5h://172.30.80.1:10808
+```
+
 > **NOTE**
 >
-> On Ubuntu 18.04, you might need to import some special paths in `.ccls` file, see [.ccls-ubuntu-18.04](./.ccls-ubuntu-18.04).
+> For WSL2, copy `./.bash_profile` to your home directory to have all proxies configured. Assuming the proxy port is 10808 and proxy is socks5 proxy.
 
 ## Docker image set up
 
