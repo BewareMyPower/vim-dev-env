@@ -312,8 +312,17 @@ endfunc
 map <F12> :call ClangFormatMySelf()<CR>
 func! ClangFormatMySelf()
     exec "w"
-    exec "AsyncRun clang-format-5.0 -i %"
+    exec "AsyncRun clang-format -i %"
     exec "e"
     exec "call asyncrun#quickfix_toggle(6)"
 endfunc
 
+" rhysd/vim-clang-format might be stuck sometimes, so here we wrap a function
+" for it.
+map <F12> :call ClangFormat11()<CR>
+func! ClangFormat11()
+    exec "w"
+    exec "AsyncRun clang-format-11 -i %"
+    exec "e"
+    exec "call asyncrun#quickfix_toggle(6)"
+endfunc

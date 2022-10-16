@@ -2,6 +2,9 @@ if [[ -f ~/.bashrc ]]; then
     . ~/.bashrc
 fi
 
+###############################################################################
+# Proxy related
+###############################################################################
 PROXY_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
 alias sudop="sudo http_proxy=socks5h://$PROXY_IP:10808"
 export https_proxy=socks5://$PROXY_IP:10808
@@ -14,3 +17,34 @@ if [[ -f ~/.ssh/config ]]; then
 else
     echo $SSH_PROXY > ~/.ssh/config
 fi
+
+###############################################################################
+# Git related
+###############################################################################
+pb() {
+    git push origin $(git branch | grep "\*" | awk '{print $2}')
+}
+
+gp() {
+    git pull
+}
+
+gd() {
+    git diff
+}
+
+gdc() {
+    git diff --cached
+}
+
+gs() {
+    git show
+}
+
+gl() {
+    git log
+}
+
+glo() {
+    git log --pretty=oneline
+}
