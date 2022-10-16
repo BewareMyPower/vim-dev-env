@@ -25,7 +25,7 @@ fi
 
 # ccls required Node.js 14.14.0 or higher
 curl -O -L https://install-node.vercel.app/lts
-bash lts -y
+$SUDO bash lts -y
 rm -f lts
 
 $SUDO $APT install -y libncurses-dev python3-dev
