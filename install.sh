@@ -58,4 +58,9 @@ pushd vim-dev-env
 
     cp -f .vimrc ~/.vimrc
     cp -f coc-settings.json ~/.vim
+
+    # It seems that vim or sed cannot remove '\r' in a CRLF file.
+    # This program is to achieve that goal.
+    g++ -std=c++11 ./crlf_to_lf.cc -o ./crlf_to_lf
+    $SUDO mv crlf_to_lf /usr/bin/crlf_to_lf
 popd
