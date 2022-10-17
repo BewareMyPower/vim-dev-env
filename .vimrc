@@ -24,6 +24,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'plasticboy/vim-markdown'
 " Highlight plugin for modern C++
 Plug 'bfrg/vim-cpp-modern'
+" git blame plugin, press ";s" to show the info
+Plug 'zivyangll/git-blame.vim'
 
 call plug#end()
 
@@ -320,3 +322,5 @@ func! ClangFormat11()
     exec "e"
     exec "call asyncrun#quickfix_toggle(6)"
 endfunc
+
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>

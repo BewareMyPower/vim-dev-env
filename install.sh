@@ -67,6 +67,7 @@ pushd vim-dev-env
         git clone https://github.com/vim-airline/vim-airline.git
         git clone https://github.com/vim-airline/vim-airline-themes.git
         git clone https://github.com/bfrg/vim-cpp-modern.git
+        git clone https://github.com/zivyangll/git-blame.vim.git
     popd
 
     cp -f .vimrc ~/.vimrc
