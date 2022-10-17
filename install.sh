@@ -22,6 +22,7 @@ $SUDO $APT install -y curl git gcc g++ cmake clang-format nodejs universal-ctags
 if [[ $PROXY ]]; then
     git config --global http.https://github.com.proxy $PROXY
 fi
+git config --global core.editor "vim"
 
 # ccls required Node.js 14.14.0 or higher
 curl -O -L https://install-node.vercel.app/lts
