@@ -277,6 +277,8 @@ let g:Lf_ShowRelativePath = 0
 let g:Lf_HideHelp = 1
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
+let g:Lf_UseCache = 0
+let g:Lf_UseMemoryCache = 0
 
 
 "" nerdtree
@@ -309,14 +311,6 @@ func! RunProgram()
         exec "AsyncRun chmod u+x % && ./%"
     endif
 endfunc
-map <F12> :call ClangFormatMySelf()<CR>
-func! ClangFormatMySelf()
-    exec "w"
-    exec "AsyncRun clang-format -i %"
-    exec "e"
-    exec "call asyncrun#quickfix_toggle(6)"
-endfunc
-
 " rhysd/vim-clang-format might be stuck sometimes, so here we wrap a function
 " for it.
 map <F12> :call ClangFormat11()<CR>
