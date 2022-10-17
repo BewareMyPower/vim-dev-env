@@ -17,7 +17,7 @@ else
 fi
 
 $SUDO $APT -y update
-$SUDO $APT install -y curl git gcc g++ cmake clang-format ccls nodejs universal-ctags
+$SUDO $APT install -y curl git gcc g++ cmake clang-format nodejs universal-ctags
 
 if [[ $PROXY ]]; then
     git config --global http.https://github.com.proxy $PROXY
@@ -27,6 +27,19 @@ fi
 curl -O -L https://install-node.vercel.app/lts
 $SUDO bash lts -y
 rm -f lts
+
+if [[ $BUILD_LATEST_CCLS ]]; then
+    git clone --depth=1 --recursive https://github.com/MaskRay/ccls
+    cd ccls
+    $SUDO $APT install -y clang libclang-dev
+    cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_PREFIX_PATH=/usr/lib/llvm-10 \
+        -DLLVM_INCLUDE_DIR=/usr/lib/llvm-10/include \
+        -DLLVM_BUILD_INCLUDE_DIR=/usr/include/llvm-10/
+    cmake --build Release -j8
+else
+    $SUDO $APT install -y ccls
+fi
 
 $SUDO $APT install -y libncurses-dev python3-dev
 git clone https://github.com/vim/vim.git -b v9.0.0713
