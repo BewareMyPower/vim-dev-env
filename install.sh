@@ -23,6 +23,7 @@ if [[ $PROXY ]]; then
     git config --global http.https://github.com.proxy $PROXY
 fi
 git config --global core.editor "vim"
+git config --global core.commentchar ';'
 
 # ccls required Node.js 14.14.0 or higher
 curl -O -L https://install-node.vercel.app/lts
