@@ -48,3 +48,20 @@ gl() {
 glo() {
     git log --pretty=oneline
 }
+
+function isWinDir {
+    case $PWD/ in
+        /c/* ) return $(true);;
+        /d/* ) return $(true);;
+        * ) return $(false);;
+    esac
+}
+
+function git {
+    if isWinDir
+    then
+        git.exe "$@"
+    else
+        /usr/bin/git "$@"
+    fi
+}
